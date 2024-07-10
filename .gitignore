@@ -1,2 +1,5 @@
 release/*
 *.zip
+Naudio.*
+Microsoft.Extensions.*
+Windows/**/packages/**
