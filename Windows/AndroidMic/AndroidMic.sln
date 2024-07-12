@@ -1,9 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndroidMic", "AndroidMic.csproj", "{35F8D2FF-C2D0-409B-BB6B-1969B87C8688}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AndroidMic", "AndroidMic.csproj", "{35F8D2FF-C2D0-409B-BB6B-1969B87C8688}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Experimental", "..\Experimental\Experimental.csproj", "{E59CDF57-78AD-4F54-AA48-7F75E5F5D659}"
 EndProject

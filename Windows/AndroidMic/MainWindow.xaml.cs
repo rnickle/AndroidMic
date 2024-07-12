@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using AndroidMic.Audio;
 using AndroidMic.Streaming;
+using System.Windows.Forms;
 
 namespace AndroidMic
 {
@@ -16,6 +17,7 @@ namespace AndroidMic
         public string Message { get; set; }
     }
 
+    [System.Runtime.Versioning.SupportedOSPlatform("windows")]
     public partial class MainWindow : Window
     {
         private readonly AudioBuffer sharedBuffer;
@@ -45,7 +47,7 @@ namespace AndroidMic
                     SetForegroundWindow(processes[prevProcessIdx].MainWindowHandle);
                 }
                 // close current process
-                Application.Current.Shutdown();
+                System.Windows.Application.Current.Shutdown();
             }
             InitializeComponent();
             // raise process priority to keep connection stable
@@ -76,7 +78,7 @@ namespace AndroidMic
         private void SetupNotificationIcon()
         {
             // reference: https://stackoverflow.com/questions/10230579/easiest-way-to-have-a-program-minimize-itself-to-the-system-tray-using-net-4
-            using (var iconStream = Application.GetResourceStream(new Uri("/icon.ico", UriKind.Relative)).Stream)
+            using (var iconStream = System.Windows.Application.GetResourceStream(new Uri("/icon.ico", UriKind.Relative)).Stream)
             {
                 notifyIcon.Icon = new System.Drawing.Icon(iconStream);
             }
@@ -89,14 +91,19 @@ namespace AndroidMic
                     Show();
                     WindowState = WindowState.Normal;
                 };
-            notifyIcon.ContextMenu = new System.Windows.Forms.ContextMenu();
-            notifyIcon.ContextMenu.MenuItems.Add(
-                "Quit",
+            notifyIcon.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip();
+            notifyIcon.ContextMenuStrip.Items.Add("Quit",
+                null,
                 delegate (object sender, EventArgs e)
                 {
                     Close();
                 }
             );
+                // This event handler is invoked when the ContextMenuStrip
+                // control's Opening event is raised. It demonstrates
+                // dynamic item addition and dynamic SourceControl 
+                // determination with reuse.
+
         }
 
         // load user settings for MainWindow & AdvancedWindow
@@ -233,7 +240,7 @@ namespace AndroidMic
         // click event for connect button
         private void ConnectButton_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button btn && btn != null)
+            if (sender is System.Windows.Controls.Button btn && btn != null)
             {
                 if (btn.Content.ToString().StartsWith("C"))
                     streamM?.Start();
@@ -310,7 +317,7 @@ namespace AndroidMic
         // connection type radio button checked event
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            if (sender is RadioButton rb && rb != null && (rb.IsChecked == true))
+            if (sender is System.Windows.Controls.RadioButton rb && rb != null && (rb.IsChecked == true))
             {
                 // select bluetooth or wifi
                 if (rb.Content.ToString().StartsWith("B"))
