@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows7.0</TargetFramework>
     <OutputType>WinExe</OutputType>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
@@ -47,7 +47,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Resource Include="icon.ico" />
@@ -82,8 +82,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="32feet.NET" Version="3.5.0" />
     <PackageReference Include="AdvancedSharpAdbClient" Version="2.5.2" />
+    <PackageReference Include="InTheHand.Net.Bluetooth" Version="4.1.43" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="NAudio" Version="2.1.0" />
     <PackageReference Include="NAudio.Asio" Version="2.1.0" />
