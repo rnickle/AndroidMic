@@ -48,9 +48,11 @@ namespace AndroidMic.Streaming
             {
                 switch (type)
                 {
+#if !NET6_0_OR_GREATER
                     case ConnectionType.BLUETOOTH:
                         server = new StreamerBluetooth();
                         break;
+#endif
                     case ConnectionType.WIFI:
                         server = new StreamerWifi();
                         break;

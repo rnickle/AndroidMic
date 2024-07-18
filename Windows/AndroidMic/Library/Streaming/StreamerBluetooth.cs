@@ -9,6 +9,7 @@ using InTheHand.Net.Sockets;
 using InTheHand.Net.Bluetooth;
 using AndroidMic.Audio;
 
+#if !NET6_0_OR_GREATER
 namespace AndroidMic.Streaming
 {
     public class StreamerBluetooth : Streamer
@@ -210,3 +211,4 @@ namespace AndroidMic.Streaming
         }
     }
 }
+#endif
